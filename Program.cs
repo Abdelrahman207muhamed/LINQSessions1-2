@@ -256,35 +256,112 @@ namespace LINQSessions1_2
             // var result = ProductList.Where(P=>P.UnitsInStock>0).Where((P,I)=>I<5);
 
 
-            ArrayList arraylist = new ArrayList() { 1, 2, 3, "Ahmed", "Ali", 1.3, 1.5, 1.7f, 1.8f, 2.3m, 4.5m, ProductList[0], ProductList[1] };
+            //  ArrayList arraylist = new ArrayList() { 1, 2, 3, "Ahmed", "Ali", 1.3, 1.5, 1.7f, 1.8f, 2.3m, 4.5m, ProductList[0], ProductList[1] };
 
-          var result=  arraylist.OfType<float>();
+            //var result=  arraylist.OfType<float>();
 
 
+            //  foreach (var item in result)
+            //  {
+            //      Console.WriteLine(item);
+            //  }
+
+
+            #endregion
+
+            #region Transformation Operators - Select, SelectMany
+
+            //Fluent Syntax
+
+            //var result = ProductList.Select(P => P);
+            //var result = ProductList.Select(P => P.ProductName);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            //Query Syntax
+
+            //var result = from P in ProductList
+            //             select P.ProductName;
+
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Fluent Syntax
+
+            //var result = ProductList.Where(P => P.UnitsInStock > 0 && P.Category == "Seafood")
+            //    .Select(P => new {
+            //        P.ProductName,
+            //        P.Category, 
+            //        OldPrice = P.UnitPrice,
+            //        NewPrice = P.UnitPrice - P.UnitPrice * 0.1m 
+            //    });
+
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Query Syntax
+
+            //var result = from P in ProductList
+            //             where P.UnitsInStock > 0 && P.Category == "Seafood"
+            //             select new
+            //             {
+            //                 P.ProductName,
+            //                 P.Category,
+            //                 OldPrice = P.UnitPrice,
+            //                 NewPrice = P.UnitPrice - P.UnitPrice * 0.1M
+            //             };
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Fluent Syntax:
+
+            // var result = CustomerList.Select(C => C.CustomerName);
+            // var result = CustomerList.Select(C => C.Orders); //If One The Property Is Sequence
+            // var result = CustomerList.SelectMany(C => C.Orders); //If One The Property Is Sequence
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            // Query Syntax :
+
+            //var result = from C in CustomerList
+            //             from O in C.Orders 
+            //             select O;
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            //Indexed Select  Valid Only in Fluent Synta
+            //Can't Be Written Using Queery Syntax
+
+            var result = ProductList.Select((P, I) => new { I, P.ProductName }).Where(P => P.I < 5);
             foreach (var item in result)
             {
                 Console.WriteLine(item);
             }
 
 
+            #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            #region Ordering Operators
 
 
 
