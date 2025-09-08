@@ -9,6 +9,32 @@ using System.Xml.Linq;
 namespace LINQSessions1_2
 {
     #region class Product
+
+    class ProductComparerNameLength : IComparer<Product>
+    {
+        public int Compare(Product? x, Product? y)
+        {
+            return x.ProductName.Length.CompareTo(y.ProductName.Length);
+        }
+    }
+
+    class ProductComparerNameLength01 : IComparer<string>
+    {
+
+        public int Compare(string? x, string? y)
+        {
+            return x.Length.CompareTo(y.Length);
+        }
+    }
+
+    class ProductComparerUnitInStock : IComparer<Product>
+    {
+        public int Compare(Product? x, Product? y)
+        {
+            return x.UnitsInStock.CompareTo(y.UnitsInStock);
+        }
+    }
+
     class Product : IComparable<Product>
     {
         public long ProductID { get; set; }
